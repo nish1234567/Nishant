@@ -1,10 +1,10 @@
-import speech_recognition as sr
-import pyttsx3
-import pywintypes
-import pywhatkit
-import datetime
-import wikipedia
-import pyjokes
+import speech_recognition as sr #it will recognize the speech
+import pyttsx3 #text to speech convert library
+import pywintypes #
+import pywhatkit  #play youtube,search on browser,etc..
+import datetime #datetime module will tell time and date
+import wikipedia #will open wikipedia
+import pyjokes #for joke 
 from googletrans import Translator
 import webbrowser
 from googlesearch import search
@@ -13,7 +13,7 @@ from googlesearch import search
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")
-engine.setProperty("voice",voices[1].id)
+engine.setProperty("voice",voices[1].id) #1 for female,0 for male
 engine.say("Welcome I am alexa")
 engine.say("What can i do for you")
 engine.runAndWait()
@@ -57,11 +57,11 @@ def run_alexa():
         talk(T)
     #For going on date
     elif "date" in command:
-        date = command.replace("date", "ghumne", "")
+        date = command.replace("date", "")
         talk("Sorry, I can not go",date)
     #Joke
     elif "joke" in command:
-        jo = command.replace("joke", "chutkula", "")
+        jo = command.replace("joke", "")
         talk(pyjokes.get_joke()+jo)
     #Dance
     elif "dance" in command:
@@ -72,8 +72,11 @@ def run_alexa():
     elif "open" in command:
         i=search(command)
         pywhatkit.search(i)
+
+    elif "what can you do for me" in command:
+        talk("i will give you answer of your answer")
         
     else:
-        talk("Say again")
+        talk("Meri samaj Mein nahi aaya Say again")
 while True:
     run_alexa()
